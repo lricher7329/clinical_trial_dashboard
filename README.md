@@ -2,11 +2,13 @@
 
 A Bayesian approach to analyzing clinical trial outcomes using Quarto, R, and Python.
 
-![Dashboard Preview](images/study_design.svg)
+![Dashboard Preview](images/report_preview.png)
 
 ## Overview
 
 This dashboard presents analyses of a hypothetical clinical trial examining the efficacy of Treatment X versus standard care in patients with Condition Y. The analyses incorporate Bayesian methods to quantify uncertainty and provide probabilistic interpretations of treatment effects.
+
+![Example Study Design](images/example_study_design.svg)
 
 ## Features
 
