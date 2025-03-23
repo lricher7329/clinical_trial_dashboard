@@ -1,0 +1,40 @@
+project:
+  type: website
+  output-dir: _site
+  title: "Clinical Trial Analysis Dashboard"
+  render:
+    - "*.qmd"
+    - "!interactive-report.qmd"  # Exclude this file from rendering
+
+website:
+  title: "Clinical Trial Analysis Dashboard"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: static-report.qmd
+        text: Static Report
+      - href: interactive-report-static.qmd
+        text: Interactive Dashboard
+  page-footer: 
+    left: "Copyright 2025"
+    right: "Created with [Quarto](https://quarto.org/)"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+    df-print: paged
+
+bibliography: bibliography.bib
+
+execute:
+  echo: true
+  warning: false
+  message: false

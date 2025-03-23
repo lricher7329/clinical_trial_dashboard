@@ -1,0 +1,117 @@
+---
+title: "Clinical Trial Analysis Dashboard"
+subtitle: "A Bayesian approach to analyzing clinical trial outcomes"
+author: "Lawrence Richer MD, MSc"
+date: today
+format: 
+  html:
+    page-layout: full
+---
+
+## Overview
+
+This dashboard presents analyses of a hypothetical clinical trial examining the efficacy of Treatment X versus standard care in patients with Condition Y. The analyses incorporate Bayesian methods to quantify uncertainty and provide probabilistic interpretations of treatment effects.
+
+::::: grid
+::: g-col-6
+### Key Features
+
+-   **Bayesian analysis** of treatment effects with full posterior distributions
+-   **Interactive visualizations** of patient outcomes and biomarker data
+-   **Dynamic reporting** with parameter adjustments
+-   **Probabilistic decision metrics** for clinical relevance
+:::
+
+::: g-col-6
+### Navigation
+
+-   [Static Report](static-report.qmd): Comprehensive analysis with detailed methodology
+-   [Interactive Dashboard](interactive-report-static.qmd): Explore data with customizable visualizations
+:::
+:::::
+
+## Quick Summary
+
+```{python}
+#| label: fig-summary
+#| fig-cap: "Summary of primary and secondary outcomes"
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+
+# Set seed for reproducibility
+np.random.seed(42)
+
+# Generate dummy data
+n_patients = 200
+treatment = np.repeat(['Treatment', 'Control'], n_patients // 2)
+age = np.random.normal(65, 10, n_patients).round().astype(int)
+sex = np.random.choice(['Male', 'Female'], n_patients, p=[0.55, 0.45])
+
+# Option 1: First create the output array with zeros, then fill in each group
+primary_outcome = np.zeros(n_patients)
+# Fill in values for Treatment group
+primary_outcome[treatment == 'Treatment'] = np.random.normal(8.2, 2.0, np.sum(treatment == 'Treatment'))
+# Fill in values for Control group
+primary_outcome[treatment == 'Control'] = np.random.normal(6.5, 2.2, np.sum(treatment == 'Control'))
+
+# For secondary outcome, use a different approach with a base random distribution
+base_random = np.random.normal(0, 1, n_patients)
+secondary_outcome = np.where(
+    treatment == 'Treatment',
+    4.1 + 1.5 * base_random,  # Treatment group
+    3.4 + 1.6 * base_random   # Control group
+)
+
+# Create DataFrame
+trial_data = pd.DataFrame({
+    'patient_id': range(1, n_patients + 1),
+    'treatment': treatment,
+    'age': age,
+    'sex': sex,
+    'primary_outcome': primary_outcome,
+    'secondary_outcome': secondary_outcome
+})
+
+# Save data for later use
+trial_data.to_csv('data/trial_data.csv', index=False)
+
+# Create summary plot
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+
+# Primary outcome by treatment
+sns.boxplot(x='treatment', y='primary_outcome', data=trial_data, ax=ax1)
+ax1.set_title('Primary Outcome')
+ax1.set_ylabel('Outcome Score')
+
+# Secondary outcome by treatment
+sns.boxplot(x='treatment', y='secondary_outcome', data=trial_data, ax=ax2)
+ax2.set_title('Secondary Outcome')
+ax2.set_ylabel('Outcome Score')
+
+plt.tight_layout()
+plt.show()
+
+```
+
+## Key Metrics
+
+```{python}
+#| label: tbl-summary
+#| tbl-cap: "Summary statistics by treatment group"
+
+# Calculate summary statistics
+summary = trial_data.groupby('treatment').agg({
+    'primary_outcome': ['mean', 'std', 'min', 'max'],
+    'secondary_outcome': ['mean', 'std', 'min', 'max'],
+    'patient_id': 'count'
+}).round(2)
+
+summary.columns = ['Primary (Mean)', 'Primary (SD)', 'Primary (Min)', 'Primary (Max)', 
+                  'Secondary (Mean)', 'Secondary (SD)', 'Secondary (Min)', 'Secondary (Max)',
+                  'Count']
+
+summary
+```

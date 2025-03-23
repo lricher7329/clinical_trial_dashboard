@@ -1,0 +1,601 @@
+"patient_id","treatment","timepoint","biomarker_value"
+1,"Treatment","Baseline",53.7049382828091
+1,"Treatment","Week 6",74.3784704586345
+1,"Treatment","Week 12",84.5662101082607
+2,"Treatment","Baseline",54.6507144975356
+2,"Treatment","Week 6",46.4687102948365
+2,"Treatment","Week 12",53.5987404579036
+3,"Treatment","Baseline",50.1021771395728
+3,"Treatment","Week 6",57.3610052029874
+3,"Treatment","Week 12",65.402565497661
+4,"Treatment","Baseline",55.4017362112279
+4,"Treatment","Week 6",59.3225157959105
+4,"Treatment","Week 12",81.5134868845262
+5,"Treatment","Baseline",54.5815569558377
+5,"Treatment","Week 6",62.6221427288821
+5,"Treatment","Week 12",71.520781439433
+6,"Treatment","Baseline",49.125830769675
+6,"Treatment","Week 6",57.2783146543056
+6,"Treatment","Week 12",71.3226919568456
+7,"Treatment","Baseline",64.0300689239289
+7,"Treatment","Week 6",67.6972089539283
+7,"Treatment","Week 12",82.0435594266064
+8,"Treatment","Baseline",47.2958452482236
+8,"Treatment","Week 6",55.4444291490877
+8,"Treatment","Week 12",58.7127536124332
+9,"Treatment","Baseline",72.3260666551039
+9,"Treatment","Week 6",78.3141459666354
+9,"Treatment","Week 12",87.7625757820106
+10,"Treatment","Baseline",48.2010326229462
+10,"Treatment","Week 6",55.0803418803669
+10,"Treatment","Week 12",70.6240420298694
+11,"Treatment","Baseline",61.6898779666779
+11,"Treatment","Week 6",76.7884565216108
+11,"Treatment","Week 12",72.0407843916902
+12,"Treatment","Baseline",70.5358734451335
+12,"Treatment","Week 6",80.5196969512452
+12,"Treatment","Week 12",85.9116268863568
+13,"Treatment","Baseline",42.8549280488352
+13,"Treatment","Week 6",44.9975694823845
+13,"Treatment","Week 12",52.3325222443939
+14,"Treatment","Baseline",42.5002537925067
+14,"Treatment","Week 6",52.5660259492784
+14,"Treatment","Week 12",67.2024568746005
+15,"Treatment","Baseline",54.9591949590412
+15,"Treatment","Week 6",63.9111050801139
+15,"Treatment","Week 12",56.7636013884368
+16,"Treatment","Baseline",66.6093074488827
+16,"Treatment","Week 6",70.4438681296984
+16,"Treatment","Week 12",71.2259166600094
+17,"Treatment","Baseline",50.6755096798306
+17,"Treatment","Week 6",51.30054464008
+17,"Treatment","Week 12",56.676689578045
+18,"Treatment","Baseline",23.6806980456402
+18,"Treatment","Week 6",26.4429665081633
+18,"Treatment","Week 12",39.385540783751
+19,"Treatment","Baseline",32.0838602122681
+19,"Treatment","Week 6",29.4259620994211
+19,"Treatment","Week 12",36.9031269431795
+20,"Treatment","Baseline",63.4339531545562
+20,"Treatment","Week 6",67.1131528581714
+20,"Treatment","Week 12",76.2847136578705
+21,"Treatment","Baseline",51.2973911175722
+21,"Treatment","Week 6",60.7813391290658
+21,"Treatment","Week 12",63.8528473843507
+22,"Treatment","Baseline",22.9291373448627
+22,"Treatment","Week 6",40.9169319760692
+22,"Treatment","Week 12",52.5107817318914
+23,"Treatment","Baseline",52.3468016294618
+23,"Treatment","Week 6",56.3267440718824
+23,"Treatment","Week 12",49.7811773995853
+24,"Treatment","Baseline",62.4515801857316
+24,"Treatment","Week 6",74.0155054791439
+24,"Treatment","Week 12",77.3757648903515
+25,"Treatment","Baseline",69.738997313529
+25,"Treatment","Week 6",80.1097614769935
+25,"Treatment","Week 12",81.9691859323986
+26,"Treatment","Baseline",52.2451998126957
+26,"Treatment","Week 6",57.0472756833077
+26,"Treatment","Week 12",54.481957331065
+27,"Treatment","Baseline",54.3351834542384
+27,"Treatment","Week 6",62.4496008573598
+27,"Treatment","Week 12",66.5476759907201
+28,"Treatment","Baseline",24.0552221371242
+28,"Treatment","Week 6",38.5218374300248
+28,"Treatment","Week 12",50.5459382344998
+29,"Treatment","Baseline",54.819583586202
+29,"Treatment","Week 6",65.3410350666193
+29,"Treatment","Week 12",81.8989412926648
+30,"Treatment","Baseline",39.5081496184005
+30,"Treatment","Week 6",42.0340506657531
+30,"Treatment","Week 12",59.9685276025509
+31,"Treatment","Baseline",51.1165170261951
+31,"Treatment","Week 6",65.7847064972215
+31,"Treatment","Week 12",65.4925776134592
+32,"Treatment","Baseline",68.1086507739639
+32,"Treatment","Week 6",65.429843514401
+32,"Treatment","Week 12",69.6616958421379
+33,"Treatment","Baseline",59.5197277622662
+33,"Treatment","Week 6",73.6638521378314
+33,"Treatment","Week 12",75.8377376457133
+34,"Treatment","Baseline",35.7826525498715
+34,"Treatment","Week 6",52.8876324067956
+34,"Treatment","Week 12",62.7119470842382
+35,"Treatment","Baseline",55.2445057973425
+35,"Treatment","Week 6",67.7249119410519
+35,"Treatment","Week 12",69.3171880979854
+36,"Treatment","Baseline",32.5404765323602
+36,"Treatment","Week 6",44.2417605397892
+36,"Treatment","Week 12",52.7946313931453
+37,"Treatment","Baseline",35.9234324260448
+37,"Treatment","Week 6",50.987972291977
+37,"Treatment","Week 12",56.8005990099551
+38,"Treatment","Baseline",37.6963207895801
+38,"Treatment","Week 6",45.319127253539
+38,"Treatment","Week 12",53.3372642883807
+39,"Treatment","Baseline",28.7919621005987
+39,"Treatment","Week 6",32.7763102196154
+39,"Treatment","Week 12",36.9334844530071
+40,"Treatment","Baseline",51.178307666353
+40,"Treatment","Week 6",53.1776548933758
+40,"Treatment","Week 12",70.5905949501059
+41,"Treatment","Baseline",49.637008920909
+41,"Treatment","Week 6",62.0056300604059
+41,"Treatment","Week 12",67.3150176598774
+42,"Treatment","Baseline",46.3882236700811
+42,"Treatment","Week 6",64.4363372267277
+42,"Treatment","Week 12",57.2627872289636
+43,"Treatment","Baseline",63.3089846181351
+43,"Treatment","Week 6",66.7394982947614
+43,"Treatment","Week 12",68.4056033304616
+44,"Treatment","Baseline",42.3891334841517
+44,"Treatment","Week 6",55.4668101642966
+44,"Treatment","Week 12",55.6053580572612
+45,"Treatment","Baseline",32.4567783798398
+45,"Treatment","Week 6",46.0810100895465
+45,"Treatment","Week 12",56.260173781701
+46,"Treatment","Baseline",53.9608885855263
+46,"Treatment","Week 6",56.3930474910885
+46,"Treatment","Week 12",62.7948007370104
+47,"Treatment","Baseline",38.0440916127436
+47,"Treatment","Week 6",48.250527611261
+47,"Treatment","Week 12",56.7789329129252
+48,"Treatment","Baseline",67.7935029721939
+48,"Treatment","Week 6",71.2679274243505
+48,"Treatment","Week 12",73.8716137006483
+49,"Treatment","Baseline",48.721067948259
+49,"Treatment","Week 6",56.0628228175645
+49,"Treatment","Week 12",66.4722733209402
+50,"Treatment","Baseline",48.1440745366308
+50,"Treatment","Week 6",65.9930742784965
+50,"Treatment","Week 12",78.3232883037354
+51,"Treatment","Baseline",56.8401216554563
+51,"Treatment","Week 6",58.0564885232184
+51,"Treatment","Week 12",71.8818950858815
+52,"Treatment","Baseline",37.8019762412102
+52,"Treatment","Week 6",48.8946230350473
+52,"Treatment","Week 12",63.0992819843416
+53,"Treatment","Baseline",64.3065486389694
+53,"Treatment","Week 6",78.9000059227469
+53,"Treatment","Week 12",79.3011366540239
+54,"Treatment","Baseline",48.5471810334336
+54,"Treatment","Week 6",61.1849145724286
+54,"Treatment","Week 12",65.9863937473872
+55,"Treatment","Baseline",48.4761536104102
+55,"Treatment","Week 6",58.2160504209482
+55,"Treatment","Week 12",65.1308170126878
+56,"Treatment","Baseline",51.5492713300404
+56,"Treatment","Week 6",71.2265176809152
+56,"Treatment","Week 12",60.8355157864875
+57,"Treatment","Baseline",54.7187666570138
+57,"Treatment","Week 6",67.5382958010869
+57,"Treatment","Week 12",79.9350994896297
+58,"Treatment","Baseline",51.3409383443589
+58,"Treatment","Week 6",66.0940824077936
+58,"Treatment","Week 12",57.6755511870223
+59,"Treatment","Baseline",27.300881795363
+59,"Treatment","Week 6",25.6162983101447
+59,"Treatment","Week 12",33.6869437412014
+60,"Treatment","Baseline",47.3017357358094
+60,"Treatment","Week 6",62.5181761174538
+60,"Treatment","Week 12",76.7755247939644
+61,"Treatment","Baseline",58.4384703488482
+61,"Treatment","Week 6",49.9435090619982
+61,"Treatment","Week 12",63.7573591246057
+62,"Treatment","Baseline",58.7949143423776
+62,"Treatment","Week 6",59.8740215622334
+62,"Treatment","Week 12",65.761431660125
+63,"Treatment","Baseline",54.2943475009228
+63,"Treatment","Week 6",67.8074008942123
+63,"Treatment","Week 12",77.8053843277339
+64,"Treatment","Baseline",67.4354670791266
+64,"Treatment","Week 6",74.5983083444116
+64,"Treatment","Week 12",77.4880186440405
+65,"Treatment","Baseline",45.2188228330451
+65,"Treatment","Week 6",48.9793948156716
+65,"Treatment","Week 12",56.3307968870691
+66,"Treatment","Baseline",68.5079935360001
+66,"Treatment","Week 6",74.2354917613355
+66,"Treatment","Week 12",79.230507790572
+67,"Treatment","Baseline",52.0804429207432
+67,"Treatment","Week 6",67.0136457049452
+67,"Treatment","Week 12",75.0330441243981
+68,"Treatment","Baseline",56.038702167599
+68,"Treatment","Week 6",69.6624957603017
+68,"Treatment","Week 12",75.6303955529358
+69,"Treatment","Baseline",56.315507041102
+69,"Treatment","Week 6",63.2135924029264
+69,"Treatment","Week 12",74.1951217828735
+70,"Treatment","Baseline",60.4863410427335
+70,"Treatment","Week 6",73.5929930235514
+70,"Treatment","Week 12",62.6630176872725
+71,"Treatment","Baseline",36.0566132477594
+71,"Treatment","Week 6",47.0116595242619
+71,"Treatment","Week 12",46.2530254609846
+72,"Treatment","Baseline",45.3454689249315
+72,"Treatment","Week 6",54.2113773379854
+72,"Treatment","Week 12",60.4852876345949
+73,"Treatment","Baseline",45.2910086242601
+73,"Treatment","Week 6",66.3022743714282
+73,"Treatment","Week 12",68.0755669387213
+74,"Treatment","Baseline",48.0672223914374
+74,"Treatment","Week 6",53.444546169352
+74,"Treatment","Week 12",48.1971185966126
+75,"Treatment","Baseline",45.0636889592906
+75,"Treatment","Week 6",50.6028569330957
+75,"Treatment","Week 12",64.013117697434
+76,"Treatment","Baseline",56.0753170543102
+76,"Treatment","Week 6",62.0248468475935
+76,"Treatment","Week 12",73.0019501576804
+77,"Treatment","Baseline",58.444828171558
+77,"Treatment","Week 6",65.8586994695981
+77,"Treatment","Week 12",82.7812404857258
+78,"Treatment","Baseline",51.9907464538154
+78,"Treatment","Week 6",61.2837410204815
+78,"Treatment","Week 12",61.9079912653141
+79,"Treatment","Baseline",40.9396034094273
+79,"Treatment","Week 6",54.5940185532566
+79,"Treatment","Week 12",45.7852977712571
+80,"Treatment","Baseline",37.7518654131563
+80,"Treatment","Week 6",42.0939388802548
+80,"Treatment","Week 12",61.211877338606
+81,"Treatment","Baseline",71.9165477924436
+81,"Treatment","Week 6",75.7995843347525
+81,"Treatment","Week 12",87.2737605000504
+82,"Treatment","Baseline",48.2426251209269
+82,"Treatment","Week 6",66.3324730001797
+82,"Treatment","Week 12",64.6541568321541
+83,"Treatment","Baseline",52.489189904224
+83,"Treatment","Week 6",58.3874222082713
+83,"Treatment","Week 12",64.4916868751305
+84,"Treatment","Baseline",51.5216104162568
+84,"Treatment","Week 6",51.2719288563847
+84,"Treatment","Week 12",62.5364622993968
+85,"Treatment","Baseline",38.9117479169843
+85,"Treatment","Week 6",45.0393736546572
+85,"Treatment","Week 12",53.5800082525734
+86,"Treatment","Baseline",54.5255650467338
+86,"Treatment","Week 6",73.211688659821
+86,"Treatment","Week 12",74.690911987847
+87,"Treatment","Baseline",62.657928391701
+87,"Treatment","Week 6",52.8532135197387
+87,"Treatment","Week 12",66.9004311159344
+88,"Treatment","Baseline",58.6625869873327
+88,"Treatment","Week 6",58.6773332124436
+88,"Treatment","Week 12",57.7570572274846
+89,"Treatment","Baseline",54.3018507766952
+89,"Treatment","Week 6",68.1563904611235
+89,"Treatment","Week 12",80.8790850899787
+90,"Treatment","Baseline",61.9697335383161
+90,"Treatment","Week 6",56.5258894670204
+90,"Treatment","Week 12",69.7159605607493
+91,"Treatment","Baseline",63.8758813828778
+91,"Treatment","Week 6",65.6304963231189
+91,"Treatment","Week 12",82.393811991817
+92,"Treatment","Baseline",32.9315833935208
+92,"Treatment","Week 6",54.9547095896555
+92,"Treatment","Week 12",58.282150173818
+93,"Treatment","Baseline",54.0476651791927
+93,"Treatment","Week 6",64.0852483450028
+93,"Treatment","Week 12",73.0774596308023
+94,"Treatment","Baseline",65.892737453595
+94,"Treatment","Week 6",71.7830860087202
+94,"Treatment","Week 12",69.2863524121972
+95,"Treatment","Baseline",31.6959647139111
+95,"Treatment","Week 6",40.543822335659
+95,"Treatment","Week 12",57.7014284399807
+96,"Treatment","Baseline",40.1739992218652
+96,"Treatment","Week 6",51.7404571683116
+96,"Treatment","Week 12",48.5974365264425
+97,"Treatment","Baseline",36.0046731579807
+97,"Treatment","Week 6",50.4948730573298
+97,"Treatment","Week 12",52.7909825743627
+98,"Treatment","Baseline",34.8321800739628
+98,"Treatment","Week 6",44.0475526444442
+98,"Treatment","Week 12",56.4624090396076
+99,"Treatment","Baseline",47.7253410284131
+99,"Treatment","Week 6",63.1804578239851
+99,"Treatment","Week 12",70.2928235600994
+100,"Treatment","Baseline",50.5854538788868
+100,"Treatment","Week 6",66.138337645587
+100,"Treatment","Week 12",71.4759349658398
+101,"Control","Baseline",67.1553573525538
+101,"Control","Week 6",71.583528094583
+101,"Control","Week 12",69.9973724225871
+102,"Control","Baseline",61.1275586337459
+102,"Control","Week 6",61.8467431469616
+102,"Control","Week 12",67.4568892214212
+103,"Control","Baseline",34.8218695013602
+103,"Control","Week 6",40.1331340523384
+103,"Control","Week 12",41.863848087006
+104,"Control","Baseline",72.6658575364517
+104,"Control","Week 6",79.0596780092045
+104,"Control","Week 12",74.420094752092
+105,"Control","Baseline",37.6873789223877
+105,"Control","Week 6",47.8926092535366
+105,"Control","Week 12",62.541784378985
+106,"Control","Baseline",61.2617039783131
+106,"Control","Week 6",47.4561364409534
+106,"Control","Week 12",57.2706048439488
+107,"Control","Baseline",53.4438436421229
+107,"Control","Week 6",50.5862206982603
+107,"Control","Week 12",61.7645073929436
+108,"Control","Baseline",47.1085713139009
+108,"Control","Week 6",56.8014279000272
+108,"Control","Week 12",57.8977044767015
+109,"Control","Baseline",68.0272778224153
+109,"Control","Week 6",61.4841931788776
+109,"Control","Week 12",53.8492349989354
+110,"Control","Baseline",48.1722037341537
+110,"Control","Week 6",58.0427860030804
+110,"Control","Week 12",49.686606346572
+111,"Control","Baseline",40.7270247665098
+111,"Control","Week 6",49.1399614595499
+111,"Control","Week 12",56.0094264585303
+112,"Control","Baseline",57.2752380225802
+112,"Control","Week 6",54.7097394551589
+112,"Control","Week 12",59.8926308572113
+113,"Control","Baseline",44.822613092768
+113,"Control","Week 6",46.6194621564076
+113,"Control","Week 12",59.9566339852883
+114,"Control","Baseline",39.4752627527044
+114,"Control","Week 6",48.8156611003865
+114,"Control","Week 12",51.2186882900696
+115,"Control","Baseline",36.0496522983855
+115,"Control","Week 6",46.4251820121578
+115,"Control","Week 12",43.9580818314348
+116,"Control","Baseline",53.088528534127
+116,"Control","Week 6",54.9921479740113
+116,"Control","Week 12",51.0537400080913
+117,"Control","Baseline",45.2812164233669
+117,"Control","Week 6",56.7538929780458
+117,"Control","Week 12",45.0671684904368
+118,"Control","Baseline",78.6427633064215
+118,"Control","Week 6",81.2349584186868
+118,"Control","Week 12",89.4078293071197
+119,"Control","Baseline",40.129670564006
+119,"Control","Week 6",42.884104707317
+119,"Control","Week 12",51.8428932742494
+120,"Control","Baseline",43.7450931847376
+120,"Control","Week 6",60.9261499780162
+120,"Control","Week 12",51.4749020462984
+121,"Control","Baseline",38.00233061243
+121,"Control","Week 6",40.5119608068407
+121,"Control","Week 12",47.9000576115863
+122,"Control","Baseline",35.6897043502062
+122,"Control","Week 6",32.4521434032016
+122,"Control","Week 12",33.2565266655516
+123,"Control","Baseline",53.9518914831639
+123,"Control","Week 6",55.8801408714279
+123,"Control","Week 12",56.3919318941797
+124,"Control","Baseline",38.4782663518914
+124,"Control","Week 6",41.6765333156528
+124,"Control","Week 12",47.2469063907547
+125,"Control","Baseline",45.3252485019536
+125,"Control","Week 6",45.0667264596023
+125,"Control","Week 12",56.883774835706
+126,"Control","Baseline",50.9437905330538
+126,"Control","Week 6",60.1040590172402
+126,"Control","Week 12",53.7304421655277
+127,"Control","Baseline",43.4599342619592
+127,"Control","Week 6",53.6781953417044
+127,"Control","Week 12",52.1311390182376
+128,"Control","Baseline",27.5787295012587
+128,"Control","Week 6",26.0667352690974
+128,"Control","Week 12",31.4347435468968
+129,"Control","Baseline",39.7840630567465
+129,"Control","Week 6",35.4542506575013
+129,"Control","Week 12",50.9948073471736
+130,"Control","Baseline",45.0630117139284
+130,"Control","Week 6",55.8273116206119
+130,"Control","Week 12",59.783484625611
+131,"Control","Baseline",55.6120572748994
+131,"Control","Week 6",61.4359425541573
+131,"Control","Week 12",66.6687616012407
+132,"Control","Baseline",44.4401642779739
+132,"Control","Week 6",48.8285486352314
+132,"Control","Week 12",53.8728634389884
+133,"Control","Baseline",47.8324191326672
+133,"Control","Week 6",62.6876909361549
+133,"Control","Week 12",47.1493959575731
+134,"Control","Baseline",66.3639195302568
+134,"Control","Week 6",64.98648176785
+134,"Control","Week 12",71.3404983629616
+135,"Control","Baseline",69.3368238979603
+135,"Control","Week 6",73.576398289937
+135,"Control","Week 12",69.0959481345334
+136,"Control","Baseline",46.849209782401
+136,"Control","Week 6",35.913982639484
+136,"Control","Week 12",51.3483441833367
+137,"Control","Baseline",46.2687905303172
+137,"Control","Week 6",44.2399792702712
+137,"Control","Week 12",47.4977351543985
+138,"Control","Baseline",63.2408793263955
+138,"Control","Week 6",78.1326555187373
+138,"Control","Week 12",71.3818643299193
+139,"Control","Baseline",50.9566281669784
+139,"Control","Week 6",54.4960510646375
+139,"Control","Week 12",50.029627804946
+140,"Control","Baseline",54.245110043007
+140,"Control","Week 6",56.2400624780566
+140,"Control","Week 12",58.5083016138581
+141,"Control","Baseline",54.1444931891804
+141,"Control","Week 6",57.8761869758305
+141,"Control","Week 12",54.0060528340134
+142,"Control","Baseline",43.0993282506193
+142,"Control","Week 6",41.6623700507078
+142,"Control","Week 12",52.2773018713945
+143,"Control","Baseline",43.3896340347298
+143,"Control","Week 6",52.8138531722452
+143,"Control","Week 12",55.3931551771343
+144,"Control","Baseline",48.3536137608081
+144,"Control","Week 6",57.0331142976825
+144,"Control","Week 12",60.5773323372525
+145,"Control","Baseline",44.7078115586337
+145,"Control","Week 6",56.722524050933
+145,"Control","Week 12",60.8248250430864
+146,"Control","Baseline",57.8239039551341
+146,"Control","Week 6",62.247014200057
+146,"Control","Week 12",71.7015531282259
+147,"Control","Baseline",40.6235103932538
+147,"Control","Week 6",47.9429525572087
+147,"Control","Week 12",57.2047350789783
+148,"Control","Baseline",42.8009254190872
+148,"Control","Week 6",41.0276838347511
+148,"Control","Week 12",56.9902638431034
+149,"Control","Baseline",48.9559246465498
+149,"Control","Week 6",55.1956244782518
+149,"Control","Week 12",49.8789623684315
+150,"Control","Baseline",43.5925049794412
+150,"Control","Week 6",45.6918013125276
+150,"Control","Week 12",49.7477831979976
+151,"Control","Baseline",53.816976364604
+151,"Control","Week 6",54.38315762688
+151,"Control","Week 12",52.0651357199877
+152,"Control","Baseline",37.3034300381785
+152,"Control","Week 6",46.0013755556225
+152,"Control","Week 12",34.9834470875508
+153,"Control","Baseline",58.6367493167616
+153,"Control","Week 6",65.2104701640739
+153,"Control","Week 12",63.2232787757388
+154,"Control","Baseline",50.7340722301327
+154,"Control","Week 6",49.2676334717736
+154,"Control","Week 12",61.5480762061174
+155,"Control","Baseline",45.5890868214143
+155,"Control","Week 6",53.9620093416367
+155,"Control","Week 12",61.1270370943305
+156,"Control","Baseline",38.9456004881238
+156,"Control","Week 6",48.0011080161742
+156,"Control","Week 12",46.6709663785341
+157,"Control","Baseline",42.3640120331149
+157,"Control","Week 6",55.0343909617949
+157,"Control","Week 12",61.5130606924373
+158,"Control","Baseline",44.4444633096948
+158,"Control","Week 6",46.1277364910921
+158,"Control","Week 12",43.9086807771414
+159,"Control","Baseline",47.8970685440429
+159,"Control","Week 6",45.0827965587562
+159,"Control","Week 12",46.4059594883678
+160,"Control","Baseline",65.8513910478734
+160,"Control","Week 6",61.7126991298968
+160,"Control","Week 12",72.0985745303766
+161,"Control","Baseline",48.2586022242967
+161,"Control","Week 6",46.6036928674509
+161,"Control","Week 12",62.1432233567426
+162,"Control","Baseline",36.3181511627486
+162,"Control","Week 6",50.2820677401766
+162,"Control","Week 12",44.9070077604326
+163,"Control","Baseline",48.7567833439197
+163,"Control","Week 6",56.4759387016313
+163,"Control","Week 12",57.8417838447815
+164,"Control","Baseline",44.5896104554818
+164,"Control","Week 6",46.9842939265519
+164,"Control","Week 12",48.3081302178307
+165,"Control","Baseline",58.9665685733085
+165,"Control","Week 6",56.869118772561
+165,"Control","Week 12",57.0178508303289
+166,"Control","Baseline",61.7849797814922
+166,"Control","Week 6",65.3195418436232
+166,"Control","Week 12",61.3602908489596
+167,"Control","Baseline",38.6183891425667
+167,"Control","Week 6",45.9089454947077
+167,"Control","Week 12",49.5465366713335
+168,"Control","Baseline",56.5102093029065
+168,"Control","Week 6",54.5422844107988
+168,"Control","Week 12",60.9178673766857
+169,"Control","Baseline",45.8072365596407
+169,"Control","Week 6",52.671823176616
+169,"Control","Week 12",52.7997771468482
+170,"Control","Baseline",53.373336819382
+170,"Control","Week 6",67.1050616355251
+170,"Control","Week 12",65.5930479717523
+171,"Control","Baseline",46.408012768644
+171,"Control","Week 6",61.3500095099948
+171,"Control","Week 12",55.4102577835005
+172,"Control","Baseline",55.6808717615615
+172,"Control","Week 6",67.1026241654348
+172,"Control","Week 12",63.9299015076575
+173,"Control","Baseline",39.4139802940306
+173,"Control","Week 6",35.661079583402
+173,"Control","Week 12",37.4686783160411
+174,"Control","Baseline",61.0539639577603
+174,"Control","Week 6",73.5377910060892
+174,"Control","Week 12",82.2271423503346
+175,"Control","Baseline",56.8677320597412
+175,"Control","Week 6",64.9551179945729
+175,"Control","Week 12",68.3144240610644
+176,"Control","Baseline",55.6032063126902
+176,"Control","Week 6",56.8116231144734
+176,"Control","Week 12",51.123964332666
+177,"Control","Baseline",32.0254198252746
+177,"Control","Week 6",36.7792764139355
+177,"Control","Week 12",44.2177930592694
+178,"Control","Baseline",56.4103508967666
+178,"Control","Week 6",63.2697745058786
+178,"Control","Week 12",61.1433724269336
+179,"Control","Baseline",52.9502052873424
+179,"Control","Week 6",63.5387389402731
+179,"Control","Week 12",62.3339048559053
+180,"Control","Baseline",46.6649943427506
+180,"Control","Week 6",59.7922656060925
+180,"Control","Week 12",58.003925293628
+181,"Control","Baseline",46.9318855935165
+181,"Control","Week 6",65.0630017349324
+181,"Control","Week 12",53.674053978891
+182,"Control","Baseline",35.2537289957393
+182,"Control","Week 6",37.8932480536609
+182,"Control","Week 12",55.4145401442355
+183,"Control","Baseline",51.0239041982886
+183,"Control","Week 6",57.310270541441
+183,"Control","Week 12",63.1362021894477
+184,"Control","Baseline",50.6141230882413
+184,"Control","Week 6",49.9062425224717
+184,"Control","Week 12",51.1976244169852
+185,"Control","Baseline",45.5039066754194
+185,"Control","Week 6",53.0810339032309
+185,"Control","Week 12",43.8185184626881
+186,"Control","Baseline",38.0902558558039
+186,"Control","Week 6",43.7491652384365
+186,"Control","Week 12",51.111320267102
+187,"Control","Baseline",57.8310582772701
+187,"Control","Week 6",63.0322573884015
+187,"Control","Week 12",68.0305063180294
+188,"Control","Baseline",55.4462623768957
+188,"Control","Week 6",60.1433944858463
+188,"Control","Week 12",64.1218885447544
+189,"Control","Baseline",45.3578008922278
+189,"Control","Week 6",44.4804810543474
+189,"Control","Week 12",47.1392893124297
+190,"Control","Baseline",29.728307996159
+190,"Control","Week 6",34.2653319635782
+190,"Control","Week 12",43.6881182366308
+191,"Control","Baseline",59.7864469343022
+191,"Control","Week 6",52.2052879615542
+191,"Control","Week 12",59.107383674579
+192,"Control","Baseline",41.3991144129915
+192,"Control","Week 6",56.0895524295736
+192,"Control","Week 12",52.9622108967305
+193,"Control","Baseline",53.4211368663467
+193,"Control","Week 6",59.2662579722904
+193,"Control","Week 12",55.2547219272723
+194,"Control","Baseline",36.536253904601
+194,"Control","Week 6",40.9182622596818
+194,"Control","Week 12",48.4367531572922
+195,"Control","Baseline",34.2420720886648
+195,"Control","Week 6",39.4084878340825
+195,"Control","Week 12",52.2376284392769
+196,"Control","Baseline",57.9172592303841
+196,"Control","Week 6",62.5562693869211
+196,"Control","Week 12",69.4228161477857
+197,"Control","Baseline",52.4357550487269
+197,"Control","Week 6",68.3696565318511
+197,"Control","Week 12",63.3354063259961
+198,"Control","Baseline",56.6726757217833
+198,"Control","Week 6",65.5202499138697
+198,"Control","Week 12",63.5651416208949
+199,"Control","Baseline",68.3959829619268
+199,"Control","Week 6",67.7879074578697
+199,"Control","Week 12",64.6874273091362
+200,"Control","Baseline",45.2521800357021
+200,"Control","Week 6",56.8587614350098
+200,"Control","Week 12",54.1217288904969

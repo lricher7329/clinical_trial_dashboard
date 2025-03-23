@@ -1,0 +1,540 @@
+---
+title: "Interactive Analysis Dashboard"
+subtitle: "Explore Clinical Trial Data"
+format: 
+  html:
+    page-layout: full
+    code-fold: true
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(plotly)
+library(DT)
+library(crosstalk)
+library(htmltools)
+library(rstanarm)
+library(bayesplot)
+
+# Load datasets
+trial_data <- read.csv("data/trial_data.csv")
+biomarker_data <- read.csv("data/biomarker_data.csv")
+
+# Convert timepoint to factor with correct order
+biomarker_data$timepoint <- factor(biomarker_data$timepoint, 
+                                  levels = c("Baseline", "Week 6", "Week 12"))
+
+# Add age group for filtering
+trial_data$age_group <- cut(trial_data$age, 
+                           breaks = c(0, 60, 70, 100), 
+                           labels = c("<60", "60-70", ">70"))
+
+# Create shared data for linking plots
+shared_trial_data <- SharedData$new(trial_data)
+shared_biomarker_data <- SharedData$new(biomarker_data)
+```
+
+## Treatment Effect Explorer {.tabset}
+
+This section allows you to explore the treatment effects across different outcomes and subgroups.
+
+### Primary Outcome Analysis
+
+```{r primary-outcome, message=FALSE, warning=FALSE}
+# Create filter controls
+filter_controls <- bscols(
+  filter_select("treatment", "Treatment Group:", shared_trial_data, ~treatment),
+  filter_select("sex", "Sex:", shared_trial_data, ~sex),
+  filter_slider("age", "Age:", shared_trial_data, ~age, min = min(trial_data$age), max = max(trial_data$age))
+)
+
+# Create interactive boxplot
+p1 <- ggplot(shared_trial_data, aes(x = treatment, y = primary_outcome, fill = treatment)) +
+  geom_boxplot() +
+  stat_summary(fun = mean, geom = "point", shape = 18, size = 3, color = "black") +
+  labs(title = "Primary Outcome by Treatment Group",
+       x = "Treatment Group",
+       y = "Primary Outcome",
+       fill = "Treatment") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+# Create interactive scatter plot
+p2 <- ggplot(shared_trial_data, aes(x = age, y = primary_outcome, color = treatment)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(title = "Primary Outcome vs Age",
+       x = "Age",
+       y = "Primary Outcome",
+       color = "Treatment") +
+  theme_minimal()
+
+# Run Bayesian model
+fit_primary <- stan_glm(
+  primary_outcome ~ treatment + age + sex,
+  data = trial_data,
+  family = gaussian(),
+  prior = normal(0, 2.5),
+  prior_intercept = normal(5, 5),
+  chains = 2, # Fewer chains for speed
+  iter = 1000, # Fewer iterations for speed
+  seed = 123,
+  refresh = 0
+)
+
+# Extract posterior samples
+post_samples <- as.data.frame(fit_primary)
+treatment_effect <- post_samples$treatmentTreatment
+
+# Calculate summary statistics
+mean_effect <- mean(treatment_effect)
+ci_effect <- quantile(treatment_effect, c(0.025, 0.975))
+prob_positive <- mean(treatment_effect > 0)
+prob_significant <- mean(treatment_effect > 1)
+
+# Create posterior distribution plot
+p3 <- ggplot(data.frame(x = treatment_effect), aes(x = x)) +
+  geom_density(fill = "steelblue", alpha = 0.7) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
+  geom_vline(xintercept = mean_effect, linetype = "solid") +
+  geom_vline(xintercept = ci_effect, linetype = "dotted") +
+  annotate("text", x = mean_effect + 0.5, y = 0.5, 
+           label = sprintf("Mean: %.2f\n95%% CI: [%.2f, %.2f]\nP(Effect > 0): %.1f%%\nP(Effect > 1): %.1f%%",
+                          mean_effect, ci_effect[1], ci_effect[2], 
+                          prob_positive * 100, prob_significant * 100)) +
+  labs(title = "Posterior Distribution of Treatment Effect (Primary Outcome)",
+       x = "Effect Size",
+       y = "Density") +
+  theme_minimal()
+
+# Display filters
+filter_controls
+
+# Display plots in vertical layout with NULL width
+# This lets the plot take the container width automatically
+ggplotly(p1, width = NULL, height = 350)
+ggplotly(p2, width = NULL, height = 350)
+
+# Show posterior plot
+ggplotly(p3, width = NULL, height = 400)
+```
+
+### Secondary Outcome Analysis
+
+```{r secondary-outcome, message=FALSE, warning=FALSE}
+# Create interactive boxplot for secondary outcome
+p4 <- ggplot(shared_trial_data, aes(x = treatment, y = secondary_outcome, fill = treatment)) +
+  geom_boxplot() +
+  stat_summary(fun = mean, geom = "point", shape = 18, size = 3, color = "black") +
+  labs(title = "Secondary Outcome by Treatment Group",
+       x = "Treatment Group",
+       y = "Secondary Outcome",
+       fill = "Treatment") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+# Run Bayesian model for secondary outcome
+fit_secondary <- stan_glm(
+  secondary_outcome ~ treatment + age + sex,
+  data = trial_data,
+  family = gaussian(),
+  prior = normal(0, 2.5),
+  prior_intercept = normal(3, 3),
+  chains = 2,
+  iter = 1000,
+  seed = 456,
+  refresh = 0
+)
+
+# Extract posterior samples
+sec_post_samples <- as.data.frame(fit_secondary)
+sec_treatment_effect <- sec_post_samples$treatmentTreatment
+
+# Calculate summary statistics
+sec_mean_effect <- mean(sec_treatment_effect)
+sec_ci_effect <- quantile(sec_treatment_effect, c(0.025, 0.975))
+sec_prob_positive <- mean(sec_treatment_effect > 0)
+sec_prob_significant <- mean(sec_treatment_effect > 0.5)
+
+# Create posterior distribution plot
+p5 <- ggplot(data.frame(x = sec_treatment_effect), aes(x = x)) +
+  geom_density(fill = "lightgreen", alpha = 0.7) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
+  geom_vline(xintercept = sec_mean_effect, linetype = "solid") +
+  geom_vline(xintercept = sec_ci_effect, linetype = "dotted") +
+  annotate("text", x = sec_mean_effect + 0.3, y = 0.5, 
+           label = sprintf("Mean: %.2f\n95%% CI: [%.2f, %.2f]\nP(Effect > 0): %.1f%%\nP(Effect > 0.5): %.1f%%",
+                          sec_mean_effect, sec_ci_effect[1], sec_ci_effect[2], 
+                          sec_prob_positive * 100, sec_prob_significant * 100)) +
+  labs(title = "Posterior Distribution of Treatment Effect (Secondary Outcome)",
+       x = "Effect Size",
+       y = "Density") +
+  theme_minimal()
+
+
+ggplotly(p4, width = NULL, height = 400)
+ggplotly(p5, width = NULL, height = 400)
+
+
+# Create summary table
+summary_stats <- data.frame(
+  Outcome = c("Primary", "Secondary"),
+  Mean_Effect = c(mean_effect, sec_mean_effect),
+  Lower_CI = c(ci_effect[1], sec_ci_effect[1]),
+  Upper_CI = c(ci_effect[2], sec_ci_effect[2]),
+  Prob_Positive = c(prob_positive, sec_prob_positive),
+  Prob_Significant = c(prob_significant, sec_prob_significant)
+)
+
+# Display as interactive table
+datatable(summary_stats, 
+         options = list(dom = 't'),
+         rownames = FALSE,
+         colnames = c("Outcome", "Mean Effect", "Lower 95% CI", "Upper 95% CI", 
+                     "P(Effect > 0)", "P(Effect > Clinical Threshold)"),
+         caption = "Summary of Treatment Effects") %>%
+  formatRound(columns = c("Mean_Effect", "Lower_CI", "Upper_CI"), digits = 2) %>%
+  formatPercentage(columns = c("Prob_Positive", "Prob_Significant"), digits = 1)
+```
+
+## Biomarker Explorer
+
+```{r biomarker-explorer, message=FALSE, warning=FALSE}
+# Create filter controls for biomarker data
+biomarker_filters <- bscols(
+  filter_select("bio_treatment", "Treatment Group:", shared_biomarker_data, ~treatment),
+  filter_select("bio_timepoint", "Timepoint:", shared_biomarker_data, ~timepoint)
+)
+
+# Calculate summary statistics
+biomarker_summary <- biomarker_data %>%
+  group_by(treatment, timepoint) %>%
+  summarize(
+    mean_value = mean(biomarker_value),
+    se = sd(biomarker_value) / sqrt(n()),
+    lower_ci = mean_value - 1.96 * se,
+    upper_ci = mean_value + 1.96 * se,
+    .groups = "drop"
+  )
+
+# Create trajectory plot
+p6 <- ggplot() +
+  # Individual patient data (semi-transparent)
+  geom_line(data = shared_biomarker_data, 
+           aes(x = timepoint, y = biomarker_value, group = patient_id, color = treatment),
+           alpha = 0.2) +
+  # Summary lines
+  geom_line(data = biomarker_summary, 
+           aes(x = timepoint, y = mean_value, color = treatment, group = treatment),
+           size = 1.5) +
+  geom_point(data = biomarker_summary, 
+            aes(x = timepoint, y = mean_value, color = treatment),
+            size = 3) +
+  geom_errorbar(data = biomarker_summary, 
+               aes(x = timepoint, y = mean_value, ymin = lower_ci, ymax = upper_ci, color = treatment),
+               width = 0.2) +
+  labs(title = "Biomarker Trajectory",
+       x = "Time Point",
+       y = "Biomarker Value",
+       color = "Treatment Group") +
+  theme_minimal()
+
+# Display filter and plot
+biomarker_filters
+ggplotly(p6, width = 800, height = 500)
+
+# Create summary table
+biomarker_table <- biomarker_data %>%
+  group_by(treatment, timepoint) %>%
+  summarize(
+    Mean = round(mean(biomarker_value), 2),
+    SD = round(sd(biomarker_value), 2),
+    Median = round(median(biomarker_value), 2),
+    Min = round(min(biomarker_value), 2),
+    Max = round(max(biomarker_value), 2),
+    N = n(),
+    .groups = "drop"
+  )
+
+# Display as interactive table
+datatable(biomarker_table,
+         options = list(pageLength = 6, scrollX = TRUE),
+         caption = "Biomarker Summary Statistics")
+```
+
+## Subgroup Analysis
+
+```{r subgroup-analysis, message=FALSE, warning=FALSE}
+# Calculate effect sizes by subgroup
+subgroup_effects <- data.frame(
+  Subgroup = character(),
+  Variable = character(),
+  N = integer(),
+  Effect_Size = numeric(),
+  Lower_CI = numeric(),
+  Upper_CI = numeric(),
+  P_Value = numeric()
+)
+
+# Overall effect
+model_all <- stan_glm(
+  primary_outcome ~ treatment,
+  data = trial_data,
+  family = gaussian(),
+  prior = normal(0, 2.5),
+  prior_intercept = normal(5, 5),
+  chains = 2,
+  iter = 1000,
+  seed = 123,
+  refresh = 0
+)
+post_all <- as.data.frame(model_all)
+effect_all <- mean(post_all$treatmentTreatment)
+ci_all <- quantile(post_all$treatmentTreatment, c(0.025, 0.975))
+p_all <- mean(post_all$treatmentTreatment <= 0)
+
+subgroup_effects <- rbind(subgroup_effects, data.frame(
+  Subgroup = "All",
+  Variable = "Overall",
+  N = nrow(trial_data),
+  Effect_Size = effect_all,
+  Lower_CI = ci_all[1],
+  Upper_CI = ci_all[2],
+  P_Value = p_all
+))
+
+# Age groups
+for (age_group in levels(trial_data$age_group)) {
+  subset_data <- trial_data[trial_data$age_group == age_group, ]
+  model <- stan_glm(
+    primary_outcome ~ treatment,
+    data = subset_data,
+    family = gaussian(),
+    prior = normal(0, 2.5),
+    prior_intercept = normal(5, 5),
+    chains = 2,
+    iter = 1000,
+    seed = 123,
+    refresh = 0
+  )
+  post <- as.data.frame(model)
+  effect <- mean(post$treatmentTreatment)
+  ci <- quantile(post$treatmentTreatment, c(0.025, 0.975))
+  p_value <- mean(post$treatmentTreatment <= 0)
+  
+  subgroup_effects <- rbind(subgroup_effects, data.frame(
+    Subgroup = paste("Age", age_group),
+    Variable = "Age",
+    N = nrow(subset_data),
+    Effect_Size = effect,
+    Lower_CI = ci[1],
+    Upper_CI = ci[2],
+    P_Value = p_value
+  ))
+}
+
+# Sex
+for (sex_val in unique(trial_data$sex)) {
+  subset_data <- trial_data[trial_data$sex == sex_val, ]
+  model <- stan_glm(
+    primary_outcome ~ treatment,
+    data = subset_data,
+    family = gaussian(),
+    prior = normal(0, 2.5),
+    prior_intercept = normal(5, 5),
+    chains = 2,
+    iter = 1000,
+    seed = 123,
+    refresh = 0
+  )
+  post <- as.data.frame(model)
+  effect <- mean(post$treatmentTreatment)
+  ci <- quantile(post$treatmentTreatment, c(0.025, 0.975))
+  p_value <- mean(post$treatmentTreatment <= 0)
+  
+  subgroup_effects <- rbind(subgroup_effects, data.frame(
+    Subgroup = sex_val,
+    Variable = "Sex",
+    N = nrow(subset_data),
+    Effect_Size = effect,
+    Lower_CI = ci[1],
+    Upper_CI = ci[2],
+    P_Value = p_value
+  ))
+}
+
+# Create forest plot
+p7 <- ggplot(subgroup_effects, aes(x = Effect_Size, y = Subgroup)) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
+  geom_vline(xintercept = effect_all, linetype = "dotted", color = "blue") +
+  geom_point(aes(size = N), shape = 15) +
+  geom_errorbarh(aes(xmin = Lower_CI, xmax = Upper_CI), height = 0.3) +
+  labs(title = "Treatment Effect by Subgroup",
+       subtitle = "Primary Outcome",
+       x = "Effect Size",
+       y = "",
+       size = "Sample Size") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+# Display forest plot
+ggplotly(p7, width = 800, height = 400)
+
+# Display as interactive table
+datatable(subgroup_effects, 
+         options = list(pageLength = 10),
+         rownames = FALSE,
+         caption = "Subgroup Analysis Results") %>%
+  formatRound(columns = c("Effect_Size", "Lower_CI", "Upper_CI"), digits = 2) %>%
+  formatPercentage(columns = "P_Value", digits = 1)
+```
+
+## Posterior Probability Calculator
+
+This section allows you to explore the probability of treatment effects exceeding various thresholds.
+
+```{r calculator-complete, message=FALSE, warning=FALSE}
+# Prepare data for the calculator
+treatment_effects <- data.frame(
+  Outcome = character(),
+  Parameter = character(),
+  Value = numeric()
+)
+
+# Add primary outcome posterior samples
+primary_samples <- data.frame(
+  Outcome = "Primary",
+  Parameter = "Treatment",
+  Value = post_samples$treatmentTreatment
+)
+treatment_effects <- rbind(treatment_effects, primary_samples)
+
+# Add secondary outcome posterior samples
+secondary_samples <- data.frame(
+  Outcome = "Secondary",
+  Parameter = "Treatment",
+  Value = sec_post_samples$treatmentTreatment
+)
+treatment_effects <- rbind(treatment_effects, secondary_samples)
+
+# Create SharedData object for linking
+shared_effects <- SharedData$new(treatment_effects)
+
+# Create filter controls (these work without Shiny)
+filter_controls <- bscols(
+  filter_select("outcome_select", "Outcome:", shared_effects, ~Outcome),
+  filter_select("param_select", "Parameter:", shared_effects, ~Parameter)
+)
+
+# Display the filters
+filter_controls
+
+# Create interactive density plot
+p_density <- ggplot(shared_effects, aes(x = Value)) +
+  geom_density(fill = "steelblue", alpha = 0.7) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
+  labs(title = "Posterior Distribution of Treatment Effect",
+       x = "Effect Size",
+       y = "Density") +
+  theme_minimal()
+
+# Display the plot
+ggplotly(p_density, width = 800, height = 400)
+```
+
+## Probability Threshold Tables
+
+The tables below show the probability of the treatment effect exceeding various threshold values:
+
+```{r prob-tables, message=FALSE, warning=FALSE}
+# Create tables with pre-computed probabilities for various thresholds
+thresholds <- seq(0, 2, by = 0.25)
+
+# Primary outcome probabilities
+primary_probs <- sapply(thresholds, function(t) mean(post_samples$treatmentTreatment > t))
+primary_table <- data.frame(
+  Threshold = thresholds,
+  Probability = primary_probs * 100
+)
+
+# Secondary outcome probabilities
+secondary_probs <- sapply(thresholds, function(t) mean(sec_post_samples$treatmentTreatment > t))
+secondary_table <- data.frame(
+  Threshold = thresholds,
+  Probability = secondary_probs * 100
+)
+
+# Display tables
+bscols(
+  list(
+    h4("Primary Outcome: Probability of Treatment Effect > Threshold"),
+    datatable(primary_table, options = list(dom = 't'), rownames = FALSE) %>%
+      formatRound(columns = "Probability", digits = 1)
+  ),
+  list(
+    h4("Secondary Outcome: Probability of Treatment Effect > Threshold"),
+    datatable(secondary_table, options = list(dom = 't'), rownames = FALSE) %>%
+      formatRound(columns = "Probability", digits = 1)
+  )
+)
+
+# Create visualization of threshold vs probability
+threshold_data <- data.frame(
+  Threshold = rep(thresholds, 2),
+  Probability = c(primary_probs, secondary_probs) * 100,
+  Outcome = rep(c("Primary", "Secondary"), each = length(thresholds))
+)
+
+p9 <- ggplot(threshold_data, aes(x = Threshold, y = Probability, color = Outcome, group = Outcome)) +
+  geom_line(size = 1) +
+  geom_point(size = 3) +
+  labs(title = "Probability of Treatment Effect by Threshold",
+       x = "Effect Size Threshold",
+       y = "Probability (%)",
+       color = "Outcome") +
+  theme_minimal()
+
+ggplotly(p9, width = 800, height = 400)
+```
+
+## Clinical Significance Thresholds
+
+The plots below show the posterior distributions with various clinical significance thresholds:
+
+```{r threshold-plots, message=FALSE, warning=FALSE}
+# Create plots for multiple thresholds
+plot_threshold <- function(threshold, data = post_samples, param = "treatmentTreatment", title_prefix = "Primary Outcome") {
+  # Calculate probabilities
+  prob_positive <- mean(data[[param]] > 0)
+  prob_threshold <- mean(data[[param]] > threshold)
+  
+  # Create the plot
+  p <- ggplot(data.frame(x = data[[param]]), aes(x = x)) +
+    geom_density(fill = "steelblue", alpha = 0.7) +
+    geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
+    geom_vline(xintercept = threshold, linetype = "dotted", color = "green") +
+    annotate("text", x = max(data[[param]]) * 0.7, y = 0.8, 
+             label = sprintf("P(Effect > 0): %.1f%%\nP(Effect > %.1f): %.1f%%",
+                            prob_positive * 100, 
+                            threshold,
+                            prob_threshold * 100)) +
+    labs(title = paste(title_prefix, "- Threshold =", threshold),
+         x = "Effect Size",
+         y = "Density") +
+    theme_minimal()
+  
+  return(ggplotly(p, width = 800, height = 300))
+}
+
+# Display plots for primary outcome with different thresholds
+h4("Primary Outcome with Different Clinical Significance Thresholds")
+plot_threshold(0.5)
+plot_threshold(1.0)
+plot_threshold(1.5)
+
+# Display plots for secondary outcome with different thresholds
+h4("Secondary Outcome with Different Clinical Significance Thresholds")
+plot_threshold(0.25, data = sec_post_samples, title_prefix = "Secondary Outcome")
+plot_threshold(0.5, data = sec_post_samples, title_prefix = "Secondary Outcome")
+plot_threshold(0.75, data = sec_post_samples, title_prefix = "Secondary Outcome")
+```

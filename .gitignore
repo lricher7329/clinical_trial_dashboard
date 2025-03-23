@@ -1,0 +1,105 @@
+# Quarto output directories
+/_site/
+/_book/
+/.quarto/
+
+# R specific files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+.Rapp.history
+.Rprofile
+
+# Python specific files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.ipynb_checkpoints
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.quarto_ipynb
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+.vs/
+.DS_Store
+
+# Generated files
+*.html
+*.pdf
+*.docx
+*.tex
+*.log
+*.aux
+*.out
+*.toc
+*.idx
+*.ilg
+*.ind
+*.xdv
+*.bcf
+*.run.xml
+
+# Temporary files
+*~
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# Stan compilation artifacts
+*.rds
+*.stan.json
+*.stan.hpp
+*.stan.o
+
+# Data files (uncomment if you don't want to track data files)
+# *.csv
+# *.xlsx
+# *.xls
+# *.rda
+# *.rdata
+# *.RData
+# *.json
+# *.xml
+
+# Large media files (uncomment if needed)
+# *.mp4
+# *.tiff
+# *.avi
+# *.flv
+# *.mov
+# *.wmv
+
+# Artifact directories for rendered output
+/results/
+/figures/
+/cache/
+_cache/
